@@ -1,0 +1,49 @@
+- vars:
+    topic: "pizza"
+  assert:
+    - type: contains
+      value: "pizza"
+    - type: length
+      min: 30
+      max: 500
+    - type: regex
+      value: "[.!?][\\s]*[.!?]"  # Checks for two sentences
+    - type: regex
+      value: ".*\\n.*"  # Ensures there are line breaks
+
+- vars:
+    topic: "cats"
+  assert:
+    - type: contains
+      value: "cat"
+    - type: contains
+      value: ":"  # Checks for dialogue (presence of colon)
+    - type: regex
+      value: ".*[?!]$"  # Ends with question mark or exclamation
+    - type: not_contains
+      value: "dog"  # Ensures we're not mixing topics
+
+- vars:
+    topic: "computers"
+  assert:
+    - type: contains
+      value: "computer"
+    - type: length
+      min: 50
+      max: 600
+    - type: regex
+      value: "episode|show|contestant"  # Reality TV show keywords
+    - type: contains_json_path
+      value: "$.length"
+
+- vars:
+    topic: "bananas"
+  assert:
+    - type: contains
+      value: "banana"
+    - type: regex
+      value: "[Hh]eadline|[Nn]ews"  # News-related keywords
+    - type: regex
+      value: ".*\\n.*"  # Line break check
+    - type: javascript
+      value: "output.split('.').length >= 2"  # At least two sentences

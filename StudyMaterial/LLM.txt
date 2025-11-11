@@ -1,0 +1,47 @@
+Large Language Models (LLM) — Beginner Study Guide
+
+1) What is an LLM?
+- A Large Language Model predicts and generates text based on patterns learned from large datasets.
+- Core capability: given input tokens, predict next tokens to form coherent output.
+
+2) Key concepts
+- Token: smallest unit processed (words, subwords). Models count and limit tokens.
+- Vocabulary / tokenizer: converts text ↔ tokens.
+- Parameters: model weights learned during training (billions/trillions).
+- Pretraining vs Fine-tuning: pretrain on broad corpora; fine-tune on task-specific data.
+- Inference: generating text from a trained model given a prompt.
+
+3) Common model behaviors
+- Temperature: controls randomness (0 = deterministic, higher = more diverse).
+- Top-k / top-p (nucleus) sampling: affect token selection strategies.
+- Beam search vs sampling: deterministic vs varied outputs.
+- Context window: maximum tokens model can attend to; longer context = more memory.
+
+4) Prompting basics
+- Prompt = instruction + any context + input variables.
+- System / instruction prompts set high-level behavior.
+- Few-shot prompting: show examples in prompt to guide output style.
+- Chain-of-thought: include intermediate reasoning steps to improve complex outputs (may leak internal reasoning).
+
+5) Evaluation & metrics
+- Perplexity: model fit measure (lower = better).
+- Human evaluation: fluency, correctness, helpfulness.
+- Automated checks: BLEU/ROUGE (for specific tasks), semantic similarity.
+
+6) Safety & limitations
+- Hallucination: fabricating facts.
+- Biases: reflects biases in training data.
+- Privacy risks: memorized sensitive data can be exposed.
+- Mitigations: prompt constraints, verification, filtering, monitoring, fine-tuning with curated data.
+
+7) Best practices
+- Keep prompts clear and specific.
+- Limit ambiguity, include examples for desired format.
+- Use temperature=0 for deterministic outputs in tests.
+- Validate outputs with assertions or external checks.
+- Monitor costs and token usage; optimize prompt length.
+
+8) Quick glossary
+- Inference, Tokenization, Context window, Temperature, Sampling, Fine-tuning, Hallucination, Prompt engineering.
+
+End of LLM basics guide.

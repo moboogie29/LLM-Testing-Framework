@@ -1,0 +1,55 @@
+Red Teaming — Study Guide (AI / LLM focus)
+
+1) What is red teaming?
+- Red teaming is adversarial testing: simulate attackers or misuse to uncover weaknesses in systems, including AI models.
+
+2) Objectives
+- Identify safety, reliability, privacy, and security vulnerabilities.
+- Find prompt injection, jailbreaks, data leakage, and harmful outputs.
+
+3) Common attack vectors for LLMs
+- Prompt injection: input that overrides instructions or exfiltrates data.
+- Jailbreaks: crafting prompts to bypass safety rules (e.g., "ignore previous instructions").
+- Data exfiltration: coax model to reveal memorized sensitive information.
+- Adversarial examples: inputs that cause degraded, biased, or incorrect behavior.
+- Chain-of-thought leaks: forcing the model to reveal internal reasoning or hidden data.
+
+4) Red teaming methods
+- Automated fuzzing: random/structured mutation of prompts.
+- Template-based attacks: systematic injection of known patterns (e.g., "follow these steps: ...").
+- Human-in-the-loop: skilled testers try creative jailbreaks and social engineering prompts.
+- Scenario-based: simulate phishing, misinformation, or harmful instruction requests.
+- Model-to-model testing: use one model to generate adversarial prompts for another.
+
+5) Measurements and metrics
+- Frequency of harmful outputs, success rate of jailbreaks.
+- Severity scoring (impact and likelihood).
+- Reproducibility of exploit across prompts and users.
+
+6) Mitigations and defenses
+- Instruction hardening: prepend strong system messages and ensure they persist.
+- Input sanitization: detect and neutralize suspicious patterns.
+- Output filtering: use classifiers or rule-based filters before returning results.
+- Rate limits and access controls to limit exploitation scale.
+- Differential privacy / data minimization to reduce memorized sensitive data.
+- Continuous monitoring and logging to detect anomalous queries.
+
+7) Testing workflow
+- Threat modeling: identify assets and attacker goals.
+- Design tests: build cases that target specific weaknesses.
+- Execute at scale: automated & manual testing.
+- Triage & fix: prioritize issues and apply defenses.
+- Retest and iterate.
+
+8) Ethical and legal notes
+- Red teaming may produce harmful content for testing; handle results responsibly.
+- Obtain proper authorization and follow organizational policies.
+
+9) Quick checklist for AI red teamers
+- Gather model prompts, system messages, and context window usage.
+- Try instruction overrides and nested instructions.
+- Attempt data extraction using likely data patterns (emails, API keys).
+- Test for bias and hallucination on sensitive topics.
+- Validate mitigation effectiveness after fixes.
+
+End of red teaming guide.

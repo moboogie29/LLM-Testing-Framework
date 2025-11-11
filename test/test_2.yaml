@@ -1,0 +1,13 @@
+- vars:
+    topic: cats and dogs
+  assert:
+    - type: contains
+      value: "cat"
+    
+- vars:
+    topic: computers
+  assert:
+    - type: icontains
+      value: "computer"
+   
+    

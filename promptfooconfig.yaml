@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://promptfoo.dev/config-schema.json
+
+# Learn more about building a configuration: https://promptfoo.dev/docs/configuration/guide
+
+description: "Promptfoo Test Example"
+
+prompts:
+  - file://prompts/prompt_1.txt
+  #- file://prompts/prompt_2.txt
+  #- file://prompts/prompt_3.txt
+  
+providers:
+  
+  - file://providers/anthropic.yaml
+  #- file://providers/gpt4.yaml
+  #- file://providers/gpt5.yaml
+  #- file://providers/lmQwen3.yaml
+  
+tests:
+  #- file://test/test_1.yaml  
+  - file://test/test_2.yaml 

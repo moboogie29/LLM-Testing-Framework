@@ -1,0 +1,5 @@
+# Anthropic Claude
+  - id: anthropic:claude-3-5-sonnet-latest
+    config:
+      temperature: 1
+      max_tokens: 150

@@ -1,0 +1,2 @@
+Write a short poem (2 lines) about {{topic}}.
+Make it rhyme and include a punchline.

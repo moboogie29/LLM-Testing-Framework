@@ -1,0 +1,28 @@
+Write a short 2 sentence funny story about {{topic}}.
+Make sure the story includes an unexpected twist.
+---
+Write a brief dialogue between two characters discussing {{topic}}.
+End the conversation with a humorous misunderstanding.
+---
+Describe a day in the life of someone obsessed with {{topic}}.
+Include at least one comical mishap.
+---
+Imagine {{topic}} as the theme of a reality TV show.
+Summarize the first episode in two sentences.
+---
+Tell a joke that involves {{topic}}.
+Explain why it’s unexpectedly funny.
+---
+Write a two-sentence news headline about {{topic}}.
+Make it sound both serious and silly.
+---
+Describe a dream someone might have about {{topic}}.
+Make the dream end in a funny way.
+---
+Write a short poem (2 lines) about {{topic}}.
+Make it rhyme and include a punchline.
+---
+Invent a new product inspired by {{topic}}.
+Pitch it in two sentences with a humorous twist.
+---
+Write a fortune cookie message about {{topic}}.

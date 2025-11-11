@@ -1,0 +1,83 @@
+Promptfoo AI Testing — Study Guide (variables, prompts, assertions)
+
+1) Project layout (recommended)
+- promptfooconfig.yaml  # main config
+- prompts/              # .txt prompt files with variables like {{topic}}
+- providers/            # provider YAML(s) with provider id and config
+- tests/                # test YAML files
+
+2) Prompt files
+- Use plain text .txt prompts.
+- Use Handlebars-style variables: {{topic}}, {{user}}, etc.
+- You can include multiple prompt variants separated by '---' in a single file.
+
+3) Variables
+- Define per-test with:
+  - vars:
+      topic: "pizza"
+- Variables replace placeholders in prompts at runtime.
+
+4) Tests file structure (YAML)
+- A test file is typically an array of test entries:
+  - vars:
+      topic: "pizza"
+    assert:
+      - type: contains
+        value: "pizza"
+
+5) Common assertion types (examples)
+- contains: output contains exact value (case-sensitive).
+- icontains: case-insensitive contains.
+- not_contains / excludes: ensure value absent.
+- regex / matches_regex / contains_regex: check output matches a regular expression.
+- length: check token/character length (some versions may not support; use care).
+  - e.g., type: length, min: 10, max: 200
+- equals: exact match to expected string.
+- similarity: semantic similarity threshold to a reference (version-dependent).
+- javascript: run a JS expression against output (e.g., "output.split('\\n').length === 2").
+- contains_json_path: validate structured JSON in output (if output is JSON).
+- llm_eval: use LLM to judge an output (version-dependent).
+
+Note: Promptfoo assertion names and availability vary by version. If you get "Unknown assertion type", switch to supported assertions (contains, icontains, regex, equals, javascript) or check the installed promptfoo docs.
+
+6) Example test for a 2-line poem prompt
+- vars:
+    topic: "pizza"
+  assert:
+    - type: icontains
+      value: "pizza"
+    - type: matches_regex
+      value: "^.*\\n.*$"        # ensures at least one newline (two lines)
+    - type: contains_regex
+      value: "[!?]$"           # ends with punctuation for punchline
+    - type: length
+      min: 20
+      max: 200
+
+7) Provider configuration (providers/*.yaml)
+- Each provider item must be an array element with an id and config:
+- Example:
+  - id: "openai:gpt-4"
+    config:
+      apiKey: ${OPENAI_API_KEY}
+      model: "gpt-4"
+- Ensure correct model names and environment variable usage (${VAR_NAME}).
+
+8) Running tests
+- From project root (where promptfooconfig.yaml lives):
+  source .env && promptfoo eval
+- Or specify config: promptfoo eval -c promptfooconfig.yaml
+
+9) Troubleshooting tips
+- ENOENT file errors: check relative file paths in promptfooconfig.yaml.
+- "Provider must have an id": open providers YAML and ensure each provider block has an `- id:` field.
+- "Unknown assertion type": verify supported assertions for your promptfoo version.
+- API 401/Invalid key: ensure .env loaded and provider uses ${VAR}.
+
+10) Practical checklist for passing tests
+- Use deterministic settings (temperature 0) for stable assertions.
+- Keep test assertions resilient (prefer icontains/regex over exact equality unless strict).
+- Validate newline and sentence counts with regex or JS assertions.
+- Avoid unsupported params (e.g., older promptfoo versions may reject 'max_tokens' — use correct param name per provider).
+
+End of Promptfoo testing guide.

@@ -1,0 +1,1 @@
+Write a short 4 sentence sad story about {{topic}}
